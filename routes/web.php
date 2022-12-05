@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\SocialShareButtonsController;
+use App\Http\Controllers\ProgressBarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +21,8 @@ Route::get('/', function () {
 });
 
 Route::resource('students', StudentController::class);
+Route::get('/autocomplete-search', [StudentController::class, 'autocompleteSearch']);
+Route::get('/social-media-share', [SocialShareButtonsController::class,'ShareWidget']);
+Route::post('/upload-doc-file', [ProgressBarController::class, 'uploadToServer']);
+Route::get('/home-upload', [ProgressBarController::class, 'index']);
+

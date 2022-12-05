@@ -89,7 +89,13 @@ class StudentController extends Controller
         Student::whereId($id)->update($updateData);
         return redirect('/students')->with('completed', 'Student has been updated');
     }
-
+ //Search By KeyWord
+    public function autocompleteSearch(Request $request)
+    {
+          $query = $request->get('query');
+          $filterResult = Student::where('name', 'LIKE', '%'. $query. '%')->get();
+          return response()->json($filterResult);
+    } 
     /**
      * Remove the specified resource from storage.
      *
